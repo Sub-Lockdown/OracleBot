@@ -14,9 +14,14 @@ This will create the .env file, which then you need to put in the token, server,
 This section will be expanded upon, and include a howto for getting the token and what permissions to assign. 
 
 To get a reading, anyone can instead type ?reading
+* Every user gets a deck of their own
+* Every deck gets wiped if it's been over an hour since the last call
 To restart, anyone in the admin list can type ?restart
 
 ### TODO
 ----------------------------------------
 * Have it create private threads for each reading
-* Have it create indivudal decks for each reading
+
+### CHANGE LOG
+----------------------------------------
+02/02/2023 - Modified scripts to allow for indivdual decks for users, and to also wipe them every hour. 

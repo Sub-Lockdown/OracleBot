@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 import os
 import discord
 import sys
+from datetime import datetime
+from datetime import timedelta
 
 discord_variables = {'DISCORD_TOKEN': '', 'DISCORD_GUILD': '', 'DISCORD_ADMINS': ''}
 
@@ -51,9 +53,23 @@ def check_Admins(user):
 def restart_Bot():
     python = sys.executable
     os.execl(python, python, * sys.argv)
+    
+def getTimestamp(message):
+    timestamp = str(message.created_at)
+    timestamp = timestamp[11:19]
+    return timestamp
+
+def resetTimeStamp():
+    time = datetime.now() + timedelta(hours=1)
+    return time
+
+def compareTime(message, resetTime):
+    timestamp = getTimestamp(message)
+    return timestamp > resetTime
 
 def print_message(message):
-    print(f'{message.author.name}: {message.content}')
+    timestamp = getTimestamp(message)
+    print(f'{timestamp}:{message.author.name}: {message.content}')
 
 if __name__ == "__main__":
     print("This file contains the basic discord bot functions")

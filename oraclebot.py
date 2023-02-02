@@ -8,7 +8,16 @@ import discord_functions
 import oracle_deck
 
 token = discord_functions.discord_variables['DISCORD_TOKEN']
-decks = []
+decks = {}
+timestamps = {}
+
+def createDeck(message):
+    global decks
+    global timestamps
+    name = message.author.name
+    decks[name] = oracle_deck.Deck()
+    timestamps[name] = discord_functions.resetTimeStamp()
+    return
 
 @discord_functions.client.event
 async def on_message(message):
@@ -24,8 +33,13 @@ async def on_message(message):
     discord_functions.print_message(message)
 
     if message.content.startswith('?reading'):
-            deck = oracle_deck.Deck()
-            card = deck.drawCard()
+            name = message.author.name
+            try:
+                if discord_functions.compareTime(message):
+                     createDeck(message)
+            except:
+                 createDeck(message)
+            card = decks[name].drawCard()
             await message.channel.send(file=discord_functions.discord.File(card))
             return
 

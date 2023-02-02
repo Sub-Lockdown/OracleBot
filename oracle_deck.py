@@ -31,7 +31,7 @@ class Deck:
     
     def drawCard(self):
         """Removes and returns the first card in deck"""
-        return self.deck[0]
+        return self.deck.pop()
 
 class Hand:
     def __init__(self, name) -> None:
