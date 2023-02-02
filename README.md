@@ -16,6 +16,7 @@ This section will be expanded upon, and include a howto for getting the token an
 To get a reading, anyone can instead type ?reading
 * Every user gets a deck of their own
 * Every deck gets wiped if it's been over an hour since the last call
+
 To restart, anyone in the admin list can type ?restart
 
 ### TODO
